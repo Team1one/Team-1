@@ -1,1 +1,22 @@
-asdvasdbvasdfvasdfvasd
+#include <stdio.h> 
+#include <string.h> 
+int main() 
+{ 
+
+  FILE *fp; 
+  char returnData[64]; 
+  fp = popen("/sbin/ifconfig eth0", "r"); 
+  char *token;
+  char *brk; 
+  
+  fgets(returnData, 64, fp); 
+  token = strtok(returnData," "); 
+  printf("\n %s",token); 
+  
+  fgets(returnData,34,fp); 
+  token = strtok(returnData,""); 
+  printf("\n%s\n\n",token); 
+  
+  pclose(fp); 
+  
+}
